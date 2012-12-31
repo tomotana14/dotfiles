@@ -12,9 +12,11 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/vimfiler'
 
 filetype plugin indent on
-filetype indent on
 syntax on
 
 """ neocomplcache
@@ -71,15 +73,30 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 """ unite
-let g:unite_enable_start_insert = 0
+let g:unite_enable_start_insert = 1
 noremap <C-U><C-B> :Unite buffer<CR>
 noremap <C-U><C-F> :UniteWithBufferDir -buffer-name=files file<CR>
 noremap <C-U><C-R> :Unite file_mru<CR>
 noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
 noremap <C-U><C-U> :Unite buffer file_mru<CR>
 noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+""" vimfiler
+nnoremap :E :VimFiler -split -simple -winwidth=35 -no-quit<CR>
+
+""" syntastic
+let g:syntastic_auto_jump = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_echo_current_error = 1
+let g:syntastic_enable_signs = 1
+
+""" quickrun
 
 """ base
 set autoindent
@@ -96,9 +113,9 @@ set ruler
 set showmatch
 
 """ keymapping
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
+imap {} {}<LEFT>
+imap [] []<LEFT>
+imap () ()<LEFT>
 imap "" ""<LEFT>
 imap '' ''<LEFT>
 imap <> <><LEFT>
