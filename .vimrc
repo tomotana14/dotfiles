@@ -91,6 +91,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/unite.vim'
 
 "" quickrun
 let g:quickrun_config={'*': {'hook/time/enable': '1'},}
@@ -119,8 +120,13 @@ let g:neosnippet#snippets_directory='~/.vim/snippet'
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: "\<TAB>"
 
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
@@ -129,4 +135,13 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 "" unite
+nnoremap [unite] <Nop>
+nmap <Leader>f [unite]
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+nnoremap <silent> [unite]f : <C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]b : <C-u>Unite<Space>bookmark<CR>
+nnoremap <silent> [unite]m : <C-u>Unite<Space>file_mru<CR>
+nnoremap <silent> [unite]r : <C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> ,vr :UniteResume<CR>
+
 filetype plugin indent on
