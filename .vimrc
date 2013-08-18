@@ -28,6 +28,7 @@ inoremap () ()<LEFT>
 inoremap "" ""<LEFT>
 inoremap '' ''<LEFT>
 inoremap `` ``<LEFT>
+inoremap /** /**<CR><CR>/<UP><SPACE>
 ""inoremap <C-h> <LEFT>
 ""inoremap <C-j> <DOWN>
 ""inoremap <C-k> <UP>
