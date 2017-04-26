@@ -41,18 +41,20 @@ highlight ZenkakuSpace cterm=underline ctermbg=red guibg=#666666
 autocmd BufWinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 autocmd WinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
 
-augroup SkeltonAu
-    autocmd!
-    autocmd BufNewFile *.py 0read $HOME/.vim/skelton/skel.py
-augroup END
+"augroup SkeltonAu
+"    autocmd!
+"    autocmd BufNewFile *.py 0read $HOME/.vim/skelton/skel.py
+"augroup END
 
 ""dein
 set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim/
 let s:toml_file = '~/.vim/rc/dein.toml'
+let s:toml_file_lazy = '~/.vim/rc/dein_lazy.toml'
 if dein#load_state('~/.vim/bundles')
     call dein#begin('~/.vim/bundles')
 
-    call dein#load_toml(s:toml_file)
+    call dein#load_toml(s:toml_file, {'lazy': 0})
+    call dein#load_toml(s:toml_file_lazy, {'lazy': 1})
     call dein#end()
     call dein#save_state()
 endif
