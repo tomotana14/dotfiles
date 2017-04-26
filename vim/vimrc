@@ -1,0 +1,62 @@
+if &compatible
+    set nocompatible
+endif
+filetype off
+filetype plugin indent off
+
+set autoindent
+set ignorecase
+set number
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set showmatch
+set ruler
+set list
+set splitbelow
+set incsearch
+set hlsearch
+set nobackup
+set backspace=indent,eol,start
+set laststatus=2
+set noswapfile
+set nowritebackup
+set listchars=tab:>-,eol:$
+set smartcase
+set encoding=utf-8
+set showcmd
+set clipboard=unnamed,autoselect
+set listchars=tab:>-
+set t_ut=s
+
+if has("autocmd")
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line ("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+endif
+
+highlight ZenkakuSpace cterm=underline ctermbg=red guibg=#666666
+autocmd BufWinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
+autocmd WinEnter * let w:m3 = matchadd("ZenkakuSpace", '　')
+
+augroup SkeltonAu
+    autocmd!
+    autocmd BufNewFile *.py 0read $HOME/.vim/skelton/skel.py
+augroup END
+
+""dein
+set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim/
+let s:toml_file = '~/.vim/rc/dein.toml'
+if dein#load_state('~/.vim/bundles')
+    call dein#begin('~/.vim/bundles')
+
+    call dein#load_toml(s:toml_file)
+    call dein#end()
+    call dein#save_state()
+endif
+
+colorscheme jellybeans
+filetype plugin indent on
+syntax enable
