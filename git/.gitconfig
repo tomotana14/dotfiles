@@ -1,0 +1,11 @@
+[user]
+	name = tomotana14
+	email = tomotana14@gmail.com
+[core]
+	editor = vim
+[color]
+    ui = auto
+[alias]
+    st = status
+    cm = commit
+    co = checkout
