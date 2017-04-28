@@ -5,7 +5,7 @@ export TERM=xterm-256color
 export HISTIGNORE=fg*:bg*:history*:cd*
 export HISTCONTROL=ignoredups
 export HISTSIZE=10000
-export HISTTIMEFORMAT='%Y%m%d %T'
+export HISTTIMEFORMAT='%Y%m%d %T '
 
 #llvm & clang
 export LLVM_CONFIG=/usr/local/opt/llvm/bin/llvm-config
