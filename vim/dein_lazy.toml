@@ -61,3 +61,10 @@ repo = 'Shougo/vimshell.vim'
 on_map = {n = '<Plug>'}
 on_if = "!has('nvim')"
 hook_add = 'nmap [Space]s  <Plug>(vimshell_switch)'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'nvie/vim-flake8'
+on_ft = 'python'
