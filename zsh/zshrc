@@ -1,0 +1,12 @@
+alias vim=/opt/homebrew/bin/nvim
+alias history='history -i'
+alias ll='ls -lGF'
+alias ls='ls -GF'
+
+if [ -f ~/.my_secrets ]; then
+  source ~/.my_secrets
+fi
+
+eval "$(starship init zsh)"
+
+. "$HOME/work/line_sticker/src/.tools/env"

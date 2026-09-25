@@ -1,0 +1,4 @@
+export PYENV_ROOT="$HOME/.pyenv"
+export HOMEBREW_ROOT="/opt/homebrew/bin"
+export PATH=$PYENV_ROOT/bin:$HOMEBREW_ROOT:$PATH
+export LSCOLORS=cxfxcxdxbxegedabagacad
